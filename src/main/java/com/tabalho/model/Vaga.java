@@ -5,6 +5,7 @@ import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,16 +17,17 @@ public class Vaga implements Serializable {
 	@Id
 	@Column(name = "numero", unique = true, nullable = false)
 	private long numero;
-	@Column(name = "idVeiculo")
-	private long Idveiculo;
+
+	@OneToOne
+	Veiculo veiculo;
 
 	
-	public long getIdveiculo() {
-		return Idveiculo;
+	public Veiculo getVeiculo() {
+		return veiculo;
 	}
 
-	public void setIdveiculo(long idveiculo) {
-		Idveiculo = idveiculo;
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
 	}
 
 	public long getNumero() {

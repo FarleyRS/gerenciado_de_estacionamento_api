@@ -56,7 +56,7 @@ public class EstacionamentoServices {
 		
 		if(vaga.isPresent()) {
 			Vaga reVaga = vaga.get();
-			reVaga.setIdveiculo(reVeiculo.getId());
+			reVaga.setVeiculo(reVeiculo);
 			
 			repository.save(reVaga);
 		}
@@ -78,7 +78,7 @@ public class EstacionamentoServices {
 		if(vaga.isPresent()) {
 			Vaga reVaga = vaga.get();
 			
-			reVaga.setIdveiculo(0);
+			reVaga.setVeiculo(null);
 			
 			repository.save(reVaga);
 		}
@@ -99,7 +99,7 @@ public class EstacionamentoServices {
 		for(int i=0;i<vagas.size();i++) {
 			VagaVO v = new VagaVO();
 			v.setNumero(vagas.get(i).getNumero());
-			v.setIdveiculo(vagas.get(i).getIdveiculo());
+			v.setVeiculo(vagas.get(i).getVeiculo());
 			vagasVO.add(v);
 		}
  		return vagasVO;
