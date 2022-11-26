@@ -1,5 +1,6 @@
 package com.tabalho.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.tabalho.ModelVO.EntradaVO;
 import com.tabalho.ModelVO.SaidaVO;
+import com.tabalho.ModelVO.VagaVO;
 import com.tabalho.model.ConfiguracaoEstacionamento;
 import com.tabalho.model.EntradaVeiculo;
 import com.tabalho.model.Movimento;
@@ -89,8 +91,18 @@ public class EstacionamentoServices {
 		return saidaVO;
 	}
 	
-	public List<Vaga> getVagas() {
-		return repository.findAll();
+	public List<VagaVO> getVagas() {
+		List<Vaga> vagas = repository.findAll();
+		
+		List<VagaVO> vagasVO = new ArrayList<>();
+		
+		for(int i=0;i<vagas.size();i++) {
+			VagaVO v = new VagaVO();
+			v.setNumero(vagas.get(i).getNumero());
+			v.setIdveiculo(vagas.get(i).getIdveiculo());
+			vagasVO.add(v);
+		}
+ 		return vagasVO;
 	}
 	
 	

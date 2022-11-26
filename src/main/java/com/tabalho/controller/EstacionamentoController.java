@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tabalho.ModelVO.EntradaVO;
 import com.tabalho.ModelVO.SaidaVO;
+import com.tabalho.ModelVO.VagaVO;
 import com.tabalho.model.ConfiguracaoEstacionamento;
 import com.tabalho.model.EntradaVeiculo;
 import com.tabalho.model.TabelaPreco;
@@ -38,7 +39,7 @@ public class EstacionamentoController {
 	@RequestMapping(value = "/listarVagas",
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Vaga> listarVagas(){
+	public List<VagaVO> listarVagas(){
 		return services.getVagas();
 	}
 	
