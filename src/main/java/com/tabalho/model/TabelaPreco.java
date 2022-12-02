@@ -23,9 +23,6 @@ public class TabelaPreco implements Serializable{
 	@Column(name = "valorFimdeSemana",nullable = false, length = 25)
 	private Double valorFimDeSemana;
 	
-	
-
-	
 	public Long getId() {
 		return id;
 	}

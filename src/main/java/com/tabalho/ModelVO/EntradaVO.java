@@ -1,8 +1,14 @@
 package com.tabalho.ModelVO;
 
+import java.io.Serializable;
+import org.springframework.hateoas.RepresentationModel;
 
-public class EntradaVO {
+public class EntradaVO extends RepresentationModel<EntradaVO> implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String tipo;
 	private String data;
 	private String hora;

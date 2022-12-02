@@ -25,7 +25,7 @@ public class Veiculo implements Serializable{
 	private String cor;
 	
 	@OneToOne
-	Vaga vaga;
+	Modelo modelo;
 	
 	public Long getId() {
 		return id;
@@ -45,6 +45,12 @@ public class Veiculo implements Serializable{
 	}
 	public void setCor(String cor) {
 		this.cor = cor;
+	}
+	public Modelo getModelo() {
+		return modelo;
+	}
+	public void setModelo(Modelo modelo) {
+		this.modelo = modelo;
 	}
 	
 	

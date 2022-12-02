@@ -9,6 +9,11 @@ public class SaidaVO {
 	private String hora;
 	private double valor;
 	
+	@Override
+	public String toString() {
+		return " saída = " + getTipo() + "\n Data = " + getData() + "\n Hora = " + getHora()
+				+ "\n Valor = " + getValor()  + "";
+	}
 	public String getTipo() {
 		return tipo;
 	}

@@ -1,10 +1,18 @@
 package com.tabalho.ModelVO;
 
+import java.io.Serializable;
+
+import org.springframework.hateoas.RepresentationModel;
+
 import com.tabalho.model.Veiculo;
 
-public class VagaVO {
+public class VagaVO extends RepresentationModel<VagaVO> implements Serializable{
 	
-	private long numero;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Long numero;
 	private Veiculo veiculo;
 	
 	public long getNumero() {

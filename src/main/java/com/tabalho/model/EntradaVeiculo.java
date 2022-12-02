@@ -2,14 +2,15 @@ package com.tabalho.model;
 
 public class EntradaVeiculo  {
 	
-	private Long idVaga;
+	private Long numeroVaga;
 	private Veiculo veiculo;
 	
-	public long getIdVaga() {
-		return idVaga;
+	
+	public Long getNumeroVaga() {
+		return numeroVaga;
 	}
-	public void setIdVaga(long idVaga) {
-		this.idVaga = idVaga;
+	public void setNumeroVaga(Long numeroVaga) {
+		this.numeroVaga = numeroVaga;
 	}
 	public Veiculo getVeiculo() {
 		return veiculo;
@@ -17,7 +18,4 @@ public class EntradaVeiculo  {
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
-	
-	
-
 }

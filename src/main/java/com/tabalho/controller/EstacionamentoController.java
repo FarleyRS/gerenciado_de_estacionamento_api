@@ -1,21 +1,24 @@
 package com.tabalho.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tabalho.ModelVO.EntradaVO;
-import com.tabalho.ModelVO.SaidaVO;
 import com.tabalho.ModelVO.VagaVO;
+import com.tabalho.ModelVO.VeiculoVO;
 import com.tabalho.model.ConfiguracaoEstacionamento;
 import com.tabalho.model.EntradaVeiculo;
 import com.tabalho.model.TabelaPreco;
-import com.tabalho.model.Vaga;
+import com.tabalho.model.Veiculo;
+import com.tabalho.repository.VeiculoRepository;
 import com.tabalho.services.EstacionamentoServices;
 import com.tabalho.services.PrecoService;
 
@@ -27,6 +30,9 @@ public class EstacionamentoController {
 	EstacionamentoServices services;
 	@Autowired
 	PrecoService service;
+	@Autowired
+	VeiculoRepository veiculoRe;
+	
 	
 	@RequestMapping(value = "/configuracao",
 			method = RequestMethod.POST,
@@ -43,17 +49,31 @@ public class EstacionamentoController {
 		return services.getVagas();
 	}
 	
+	@RequestMapping(value = "/listarVeiculos",
+			method = RequestMethod.GET,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<VeiculoVO> listarVeiculos(Long long1){
+		return services.listarVeiculos();
+	}
+	
+	@RequestMapping(value = "/{id}",
+			method = RequestMethod.GET,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public Optional<Veiculo> veiculoById(@PathVariable(value = "id") String id){
+		return veiculoRe.findById(Long.valueOf(id));
+	}
+	
 	@RequestMapping(value = "/adicionarVeiculo",
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
 	public EntradaVO adicionarVeiculo(@RequestBody EntradaVeiculo eVeiculo) {
 		return services.adicionarVeiculo(eVeiculo);
 	}
-	
+		
 	@RequestMapping(value = "/removerVeiculo",
 			method = RequestMethod.PUT,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public SaidaVO removerVeiculo(@RequestBody Long id) {
+	public String removerVeiculo(@RequestBody Long id) {
 		return services.removerVeiculo(id);
 	}
 	
